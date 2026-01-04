@@ -169,7 +169,7 @@
             
             <div class="text-lg text-gray-300 mb-8 text-left">
                 A passionate developer with expertise in Game Development, 
-                Full Stack Development, and Machine Learning.
+                Game Design, and Web Development.
             </div>
             
             <div class="flex flex-wrap gap-4 mb-8">
@@ -223,7 +223,7 @@
         <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
             <p class="text-lg text-gray-300 leading-relaxed">
-                I am a passionate developer with expertise in Game Development, Full Stack Development, and Machine Learning. 
+                I am a passionate developer with expertise in Game Development, Game Design, and Web Development. 
                 My journey in technology began with a curiosity to create and innovate, which has evolved into a professional 
                 pursuit of building impactful solutions. I believe in writing clean, efficient code and creating user-friendly 
                 applications that solve real-world problems.
@@ -247,9 +247,7 @@
                 <button class="skill-filter-btn bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-full transition-all">
                     Game Dev
                 </button>
-                <button class="skill-filter-btn bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-full transition-all">
-                    ML/AI
-                </button>
+                <!-- ML/AI tab removed -->
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -273,20 +271,20 @@
                     <div class="skill-progress">
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">Game Development</span>
-                            <span class="text-sm font-medium">85%</span>
+                            <span class="text-sm font-medium">90%</span>
                         </div>
                         <div class="h-2 bg-slate-700 rounded-full">
-                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 85%"></div>
+                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 90%"></div>
                         </div>
                     </div>
 
                     <div class="skill-progress">
                         <div class="flex justify-between mb-2">
-                            <span class="text-sm font-medium">Machine Learning</span>
-                            <span class="text-sm font-medium">80%</span>
+                            <span class="text-sm font-medium">Web Development</span>
+                            <span class="text-sm font-medium">85%</span>
                         </div>
                         <div class="h-2 bg-slate-700 rounded-full">
-                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 80%"></div>
+                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
                 </div>
@@ -295,9 +293,9 @@
             <!-- Skill Cards -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" data-aos="fade-up">
                 <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
-                    <i class="fab fa-react text-5xl text-primary mb-4 group-hover:animate-spin"></i>
-                    <h3 class="font-semibold text-lg">React</h3>
-                    <p class="text-sm text-gray-400 mt-2">Frontend Development</p>
+                    <i class="fas fa-gamepad text-5xl text-primary mb-4 group-hover:animate-spin"></i>
+                    <h3 class="font-semibold text-lg">Godot</h3>
+                    <p class="text-sm text-gray-400 mt-2">Game Development</p>
                 </div>
                 
                 <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
@@ -309,13 +307,13 @@
                 <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
                     <i class="fab fa-python text-5xl text-primary mb-4"></i>
                     <h3 class="font-semibold text-lg">Python</h3>
-                    <p class="text-sm text-gray-400 mt-2">ML/AI Development</p>
+                    <p class="text-sm text-gray-400 mt-2">Flask Development</p>
                 </div>
                 
                 <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
-                    <i class="fas fa-brain text-5xl text-primary mb-4"></i>
-                    <h3 class="font-semibold text-lg">Deep Learning</h3>
-                    <p class="text-sm text-gray-400 mt-2">AI Development</p>
+                    <i class="fas fa-laptop-code text-5xl text-primary mb-4 group-hover:animate-pulse"></i>
+                    <h3 class="font-semibold text-lg">Web Development</h3>
+                    <p class="text-sm text-gray-400 mt-2">HTML, CSS, JavaScript, Backend</p>
                 </div>
             </div>
         </div>
@@ -373,20 +371,13 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Contact Me</h2>
-            <form class="space-y-6" data-aos="fade-up">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="text" placeholder="Your Name" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    <input type="email" placeholder="Your Email" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <textarea rows="6" placeholder="Your Message" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg transition duration-300">
-                    Send Message
-                </button>
-            </form>
+    <!-- Contact Section (Email only) -->
+    <section id="contact" class="py-20 bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-center mb-6">Contact Me</h2>
+            <div class="flex items-center justify-center mt-6">
+                <a href="mailto:garimellasuryadeep@gmail.com" class="text-primary hover:underline text-lg">garimellasuryadeep@gmail.com</a>
+            </div>
         </div>
     </section>
 
@@ -407,9 +398,7 @@
                     <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
                         <i class="fab fa-twitter text-2xl"></i>
                     </a>
-                    <a href="https://github.com/GARIMELLASURYADEEP/portfolioooooooooooooooooooooooooo" target="_blank" rel="noopener noreferrer" class="ml-4 inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-full transition transform hover:scale-105">
-                        <i class="fab fa-github"></i> Portfolio Repo
-                    </a>
+                    <!-- Portfolio Repo link removed -->
                 </div>
             </div>
         </div>
@@ -439,8 +428,8 @@
         new Typed('#typed', {
             strings: [
                 'a Game Developer',
-                'a Full Stack Developer',
-                'a Machine Learning Engineer'
+                'a Game Designer',
+                'a Web Developer'
             ],
             typeSpeed: 50,
             backSpeed: 30,
@@ -514,9 +503,8 @@
 
         // Initialize Skill Cloud
         const texts = [
-            'HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Python',
-            'Unity', 'C#', 'TensorFlow', 'PyTorch', 'MongoDB', 'AWS',
-            'Git', 'Docker', 'GraphQL', 'TypeScript'
+            'HTML', 'CSS', 'JavaScript', 'Node.js', 'React',
+            'GDScript', 'Godot', 'Unity', 'C#', 'Python', 'MongoDB'
         ];
         
         const options = {
@@ -528,6 +516,8 @@
         };
         
         TagCloud('#skillCloud', texts, options);
+
+        // Contact form scripts removed
 
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
@@ -596,24 +586,7 @@
             });
         });
 
-        // Form submission with animation
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                btn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.classList.remove('bg-green-500');
-                    e.target.reset();
-                }, 2000);
-            }, 1500);
-        });
+        // Contact form scripts removed
 
         // Window resize handler
         window.addEventListener('resize', () => {
