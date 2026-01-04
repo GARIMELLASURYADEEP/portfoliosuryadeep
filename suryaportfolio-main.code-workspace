@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../claustrophobia game/game"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "suryaportfolio-main"
+	}
+}
