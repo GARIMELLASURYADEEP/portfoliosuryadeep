@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURYADEEP GARIMELLA PORTFOLIO</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <!-- heavy scripts moved to bottom to avoid blocking first render -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#1e293b',
+                        accent: '#00ff88',
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #0ea5e9, #00ff88, #0ea5e9);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 5s linear infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .skill-cloud {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .glowing {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glowing:hover {
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
+        }
+        .custom-shape {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .project-card {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .project-card:hover {
+            transform: rotateY(10deg);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-100 font-poppins">
+    <!-- Particles Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-primary">SURYA<span class="text-white">DEEP</span></a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-white hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#gamedev" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Gamedev</a>
+                        <a href="#fullstcak" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">FullStack</a>
+                        <a href="#skills" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#projects" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#home" class="nav-link text-white block px-3 py-2 text-base font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 block px-3 py-2 text-base font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 block px-3 py-2 text-base font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 block px-3 py-2 text-base font-medium">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 block px-3 py-2 text-base font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-between px-4 md:px-20 overflow-hidden">
+        <!-- 3D Background Canvas -->
+        <canvas id="hero-bg" class="absolute inset-0 z-0"></canvas>
+        
+        <div class="relative z-10 max-w-xl" data-aos="fade-right">            
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-left">
+                <span class="gradient-text">SURYADEEP</span>
+            </h1>
+            
+            <div class="text-xl md:text-2xl text-gray-400 mb-8 min-h-[40px] text-left">
+                I'm <span id="typed" class="text-primary"></span>
+            </div>
+            
+            <div class="text-lg text-gray-300 mb-8 text-left">
+                A passionate developer with expertise in Game Development, 
+                Full Stack Development, and Machine Learning.
+            </div>
+            
+            <div class="flex flex-wrap gap-4 mb-8">
+                <a href="https://github.com/GARIMELLASURYADEEP" target="_blank" 
+                   class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-full transition-all transform hover:scale-105">
+                    <i class="fab fa-github text-xl"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/suryadeep2005" target="_blank"
+                   class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-full transition-all transform hover:scale-105">
+                    <i class="fab fa-linkedin text-xl"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="#projects" 
+                   class="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white px-8 py-3 rounded-full transition-all transform hover:scale-105 hover:shadow-lg">
+                    <i class="fas fa-laptop-code mr-2"></i>View My Work
+                </a>
+                <a href="../GARIMELLA%20SURYA%20DEEP%20final%20resume.pdf" target="_blank" 
+                   class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105 hover:shadow-lg">
+                    <i class="fas fa-file-lines mr-2"></i>Resume
+                </a>
+            </div>
+        </div>
+
+        <!-- Profile Image Right Side -->
+        <div class="relative z-10 hidden md:block" data-aos="fade-left">
+            <div class="relative">
+                <div class="w-96 h-96 overflow-hidden rounded-full border-4 border-primary shadow-2xl glowing bg-gradient-to-b from-slate-800 to-slate-900">
+                    <img src="surya.jpg" alt="Suryadeep Garimella" 
+                         class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500 filter drop-shadow-2xl">
+                </div>
+                <div class="absolute -bottom-4 -right-4 bg-accent text-secondary rounded-full p-4 shadow-lg">
+                    <i class="fas fa-code text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                I am a passionate developer with expertise in Game Development, Full Stack Development, and Machine Learning. 
+                My journey in technology began with a curiosity to create and innovate, which has evolved into a professional 
+                pursuit of building impactful solutions. I believe in writing clean, efficient code and creating user-friendly 
+                applications that solve real-world problems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">My Skills</h2>
+            
+            <!-- Skills Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
+                <button class="skill-filter-btn active bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-all">
+                    All Skills
+                </button>
+                <button class="skill-filter-btn bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-full transition-all">
+                    Web Dev
+                </button>
+                <button class="skill-filter-btn bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-full transition-all">
+                    Game Dev
+                </button>
+                <button class="skill-filter-btn bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-full transition-all">
+                    ML/AI
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- Interactive Skill Cloud -->
+                <div class="relative h-[400px]" data-aos="fade-right">
+                    <div id="skillCloud" class="skill-cloud"></div>
+                </div>
+
+                <!-- Skill Progress -->
+                <div class="space-y-6" data-aos="fade-left">
+                    <div class="skill-progress">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium">Frontend Development</span>
+                            <span class="text-sm font-medium">90%</span>
+                        </div>
+                        <div class="h-2 bg-slate-700 rounded-full">
+                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-progress">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium">Game Development</span>
+                            <span class="text-sm font-medium">85%</span>
+                        </div>
+                        <div class="h-2 bg-slate-700 rounded-full">
+                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-progress">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-medium">Machine Learning</span>
+                            <span class="text-sm font-medium">80%</span>
+                        </div>
+                        <div class="h-2 bg-slate-700 rounded-full">
+                            <div class="h-2 bg-gradient-to-r from-primary to-accent rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" data-aos="fade-up">
+                <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
+                    <i class="fab fa-react text-5xl text-primary mb-4 group-hover:animate-spin"></i>
+                    <h3 class="font-semibold text-lg">React</h3>
+                    <p class="text-sm text-gray-400 mt-2">Frontend Development</p>
+                </div>
+                
+                <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
+                    <i class="fab fa-unity text-5xl text-primary mb-4"></i>
+                    <h3 class="font-semibold text-lg">Unity</h3>
+                    <p class="text-sm text-gray-400 mt-2">Game Development</p>
+                </div>
+                
+                <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
+                    <i class="fab fa-python text-5xl text-primary mb-4"></i>
+                    <h3 class="font-semibold text-lg">Python</h3>
+                    <p class="text-sm text-gray-400 mt-2">ML/AI Development</p>
+                </div>
+                
+                <div class="group bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl hover:scale-105 transition-all duration-300 glowing">
+                    <i class="fas fa-brain text-5xl text-primary mb-4"></i>
+                    <h3 class="font-semibold text-lg">Deep Learning</h3>
+                    <p class="text-sm text-gray-400 mt-2">AI Development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
+                <!-- MyCitySimulator (only project kept) -->
+                <div class="bg-slate-900 rounded-lg overflow-hidden mx-auto max-w-3xl" data-aos="fade-up">
+                    <img src="mycity.png" alt="MyCitySimulator" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-2xl mb-2">MyCitySimulator</h3>
+                        <p class="text-gray-400 mb-4">A 3D city built with JavaScript.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary/20 text-primary px-2 py-1 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://garimellasuryadeep.github.io/mycitysimulator/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-white px-4 py-2 rounded-full hover:shadow-lg transition transform hover:scale-105">
+                                <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/GARIMELLASURYADEEP/mycitysimulator" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-full transition transform hover:scale-105 hover:shadow-lg">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Contact Me</h2>
+            <form class="space-y-6" data-aos="fade-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Your Name" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    <input type="email" placeholder="Your Email" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <textarea rows="6" placeholder="Your Message" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg transition duration-300">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p>&copy; 2025 Suryadeep Garimella. All rights reserved.</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://github.com/GARIMELLASURYADEEP" target="_blank" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suryadeep2005" target="_blank" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/GARIMELLASURYADEEP/portfolioooooooooooooooooooooooooo" target="_blank" rel="noopener noreferrer" class="ml-4 inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-full transition transform hover:scale-105">
+                        <i class="fab fa-github"></i> Portfolio Repo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- moved heavy libs (loaded late to speed initial render) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.4.0/dist/TagCloud.min.js"></script>
+
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Typed.js
+        new Typed('#typed', {
+            strings: [
+                'a Game Developer',
+                'a Full Stack Developer',
+                'a Machine Learning Engineer'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1500,
+            loop: true
+        });
+
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#0ea5e9' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#0ea5e9',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Initialize Three.js background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('hero-bg'),
+            alpha: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Create animated background
+        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x0ea5e9,
+            wireframe: true
+        });
+        const torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
+        camera.position.z = 30;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Initialize Skill Cloud
+        const texts = [
+            'HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Python',
+            'Unity', 'C#', 'TensorFlow', 'PyTorch', 'MongoDB', 'AWS',
+            'Git', 'Docker', 'GraphQL', 'TypeScript'
+        ];
+        
+        const options = {
+            radius: 150,
+            maxSpeed: 'normal',
+            initSpeed: 'normal',
+            direction: 135,
+            keep: true
+        };
+        
+        TagCloud('#skillCloud', texts, options);
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate skill progress bars
+        gsap.utils.toArray('.skill-progress').forEach(progress => {
+            gsap.to(progress.querySelector('div:last-child div'), {
+                width: progress.querySelector('span:last-child').textContent,
+                duration: 2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: progress,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-gray-300');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-white');
+                }
+            });
+        });
+
+        // Skill filter buttons
+        const filterBtns = document.querySelectorAll('.skill-filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active', 'bg-primary'));
+                filterBtns.forEach(b => b.classList.add('bg-slate-800'));
+                btn.classList.add('active', 'bg-primary');
+                btn.classList.remove('bg-slate-800');
+            });
+        });
+
+        // Form submission with animation
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                btn.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-500');
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            // Update Three.js canvas
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
